@@ -26,6 +26,11 @@ public class ExperienciaController {
     public List<Experiencia>getExperiencias(){
         return interExp.getExperiencias();
     }
+    
+   @GetMapping("/ver/{id}")
+    public Experiencia findExperiencia(@PathVariable Integer id){
+       return interExp.findExperiencia(id);
+   }
      @PostMapping("/crear")
     public String createExp(@RequestBody Experiencia exp){
         interExp.saveExperiencia(exp);

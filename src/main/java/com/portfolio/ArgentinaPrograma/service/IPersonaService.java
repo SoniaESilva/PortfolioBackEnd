@@ -10,5 +10,6 @@ public interface IPersonaService {
     public void savePersona(Persona perso);
     public void deletePersona(Long id);
     public Persona findPersona(Long id);
-    public Persona loginPersona(String correo, String contrasenia);
+    public PersonaDTO loginPersona(String correo, String contrasenia);
+    
 }

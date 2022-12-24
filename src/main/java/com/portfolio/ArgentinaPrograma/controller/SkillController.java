@@ -27,6 +27,10 @@ public class SkillController {
     public List<Skill>getSkills(){
         return interSkill.getSkill();
     }  
+    @GetMapping("/ver/{id}")
+    public Skill findSkill(@PathVariable Integer id){
+       return interSkill.findSkill(id);
+   }
     @PostMapping("/crear")
     public String createExp(@RequestBody Skill ski){
         interSkill.saveSkill(ski);

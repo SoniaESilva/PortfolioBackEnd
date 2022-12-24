@@ -26,20 +26,23 @@ public class ProyectoController {
     public List<Proyecto>getProyectos(){
         return interProyec.getProyecto();
     }  
-    
-     @PostMapping("/crear")
+    @GetMapping("/ver/{id}")
+    public Proyecto findProyecto(@PathVariable Integer id){
+       return interProyec.findProyecto(id);
+   }
+    @PostMapping("/crear")
     public String createProyec(@RequestBody Proyecto proyec){
         interProyec.saveProyecto(proyec);
         return "El proyecto fue creado correctamente";
     }
-    
+   
     @DeleteMapping("/borrar/{id}")
     public String deleteProyec(@PathVariable Integer id){
         interProyec.deleteProyecto(id);
         return "El proyecto fue eliminado correctamente";
     }
     
-     @PutMapping("/editar/{id}")
+    @PutMapping("/editar/{id}")
     public Proyecto editProyec(@PathVariable Integer id,
                                        @RequestParam("nombre") String nuevoNombre,
                                        @RequestParam("fecha") String nuevoFecha,

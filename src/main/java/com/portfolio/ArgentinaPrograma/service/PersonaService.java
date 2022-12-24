@@ -33,12 +33,9 @@ public class PersonaService implements IPersonaService{
         return perso;
     }
      @Override
-     public Persona loginPersona(String correo,  String contrasenia){
-      List<Persona> personas = persoRepository.findByCorreoAndContrasenia(correo, contrasenia);
-      if(!personas.isEmpty()){
-          return personas.get(0);
-          }
-      return null;
-  }
-    
+     public PersonaDTO loginPersona(String correo,  String contrasenia){
+        Persona perso= persoRepository.findByCorreoAndContrasenia(correo, contrasenia);
+        PersonaDTO personaDTO= new PersonaDTO (perso.getId(),perso.getNombre(),perso.getApellido(),perso.getBanner(), perso.getFoto_perfil(),perso.getTitulo(), perso.getAcerca_de());
+         return personaDTO;
+     }
 }

@@ -23,10 +23,14 @@ public class EducacionController {
     @Autowired
     private IEducacionService interEdu;
     
-     @GetMapping("/lista")
+    @GetMapping("/lista")
     public List<Educacion>getEducacion(){
         return interEdu.getEducacion();
     }
+    @GetMapping("/ver/{id}")
+    public Educacion findEducacion(@PathVariable Integer id){
+       return interEdu.findEducacion(id);
+   }
     @PostMapping("/crear")
     public String createEdu(@RequestBody Educacion edu){
         interEdu.saveEducacion(edu);

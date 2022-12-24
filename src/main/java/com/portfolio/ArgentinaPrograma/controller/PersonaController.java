@@ -3,6 +3,7 @@ package com.portfolio.ArgentinaPrograma.controller;
 
 import com.portfolio.ArgentinaPrograma.model.Persona;
 import com.portfolio.ArgentinaPrograma.service.IPersonaService;
+import com.portfolio.ArgentinaPrograma.service.PersonaDTO;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -27,12 +28,16 @@ public class PersonaController {
     public List<Persona>getPersonas(){
         return interPersona.getPersonas();
     }
-    
+    @GetMapping("/ver/{id}")
+     public Persona findPersona(@PathVariable Long id){
+          return interPersona.findPersona(id);
+    }
     @PostMapping("/crear")
     public String createperso(@RequestBody Persona perso){
         interPersona.savePersona(perso);
         return "La persona fue creada correctamente";
     }
+    
     
     @DeleteMapping("/borrar/{id}")
     public String deletePersona(@PathVariable Long id){
@@ -64,8 +69,9 @@ public class PersonaController {
         interPersona.savePersona(perso);
         return perso;
     }
-    @PostMapping("/autentificacion/login")
-    public Persona loginPersona(@RequestBody Persona perso){
+    
+    @PostMapping("/login")
+    public PersonaDTO loginPersona(@RequestBody Persona perso){
         return interPersona.loginPersona(perso.getCorreo(), perso.getContrasenia());
     }
     
