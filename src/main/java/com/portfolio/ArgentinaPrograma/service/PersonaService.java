@@ -28,11 +28,11 @@ public class PersonaService implements IPersonaService{
     }
 
     @Override//traer la persona 
-    public Persona findPersona(Long id) {
-         Persona perso =persoRepository.findById(id).orElse(null);
-        return perso;
-    }
-     @Override
+     public Persona findPersona(Long id) {
+     Persona perso= persoRepository.findById(id).orElse(null);
+       return perso;
+     }
+     @Override// login 
      public PersonaDTO loginPersona(String correo,  String contrasenia){
         Persona perso= persoRepository.findByCorreoAndContrasenia(correo, contrasenia);
         PersonaDTO personaDTO= new PersonaDTO (perso.getId(),perso.getNombre(),perso.getApellido(),perso.getBanner(), perso.getFoto_perfil(),perso.getTitulo(), perso.getAcerca_de());

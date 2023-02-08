@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -31,34 +30,19 @@ public class ProyectoController {
        return interProyec.findProyecto(id);
    }
     @PostMapping("/crear")
-    public String createProyec(@RequestBody Proyecto proyec){
+    public void createProyec(@RequestBody Proyecto proyec){
         interProyec.saveProyecto(proyec);
-        return "El proyecto fue creado correctamente";
     }
    
     @DeleteMapping("/borrar/{id}")
-    public String deleteProyec(@PathVariable Integer id){
+    public void deleteProyec(@PathVariable Integer id){
         interProyec.deleteProyecto(id);
-        return "El proyecto fue eliminado correctamente";
-    }
+     }
     
-    @PutMapping("/editar/{id}")
-    public Proyecto editProyec(@PathVariable Integer id,
-                                       @RequestParam("nombre") String nuevoNombre,
-                                       @RequestParam("fecha") String nuevoFecha,
-                                       @RequestParam("foto") String nuevaFoto,
-                                       @RequestParam("descripcion") String nuevaDescripcion,
-                                       @RequestParam("url") String nuevoUrl){
-        Proyecto proyec =interProyec.findProyecto(id);
-         
-        proyec.setNombre(nuevoNombre);
-        proyec.setFecha(nuevoFecha);
-        proyec.setFoto(nuevaFoto);
-        proyec.setDescripcion(nuevaDescripcion);
-        proyec.setUrl(nuevoUrl);
-        
-        
+    @PutMapping("/editar")
+    public void editProyec(@RequestBody Proyecto proyec){
         interProyec.saveProyecto(proyec);
-        return proyec;
     }
 }
+    
+

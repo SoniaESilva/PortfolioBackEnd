@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -33,47 +32,29 @@ public class PersonaController {
           return interPersona.findPersona(id);
     }
     @PostMapping("/crear")
-    public String createperso(@RequestBody Persona perso){
-        interPersona.savePersona(perso);
-        return "La persona fue creada correctamente";
+    public void createperso(@RequestBody Persona persos){
+        interPersona.savePersona(persos);
+        
     }
-    
     
     @DeleteMapping("/borrar/{id}")
-    public String deletePersona(@PathVariable Long id){
+    public void deletePersona(@PathVariable Long id){
         interPersona.deletePersona(id);
-        return "La persona fue eliminada correctamente";
-    }
-    @PutMapping ("/editar/{id}")
-    public Persona editPersona(@PathVariable Long id,
-                               @RequestParam("nombre") String nuevoNombre,
-                               @RequestParam("apellido") String nuevoApellido,
-                               @RequestParam("banner") String nuevoBanner,
-                               @RequestParam("foto_perfil") String nuevaFoto_perfil,
-                               @RequestParam("titulo") String nuevoTitulo,
-                               @RequestParam("acerca_de") String nuevaAcerca_de,
-                               @RequestParam("correo") String nuevoCorreo,
-                               @RequestParam("contrasenia")String nuevaContrasenia){
-        Persona perso= interPersona.findPersona(id);
-        
-        perso.setApellido(nuevoApellido);
-        perso.setNombre(nuevoNombre);
-        perso.setBanner(nuevoBanner);
-        perso.setFoto_perfil(nuevaFoto_perfil);
-        perso.setTitulo(nuevoTitulo);
-        perso.setAcerca_de(nuevaAcerca_de);
-        perso.setCorreo(nuevoCorreo);
-        perso.setContrasenia(nuevaContrasenia);
-        
-        
-        interPersona.savePersona(perso);
-        return perso;
     }
     
+    @PutMapping("/editar")
+    public void editPersona(@RequestBody Persona persos){
+        interPersona.savePersona(persos);
+    }
     @PostMapping("/login")
-    public PersonaDTO loginPersona(@RequestBody Persona perso){
-        return interPersona.loginPersona(perso.getCorreo(), perso.getContrasenia());
+    public PersonaDTO loginPersona(@RequestBody Persona persos){
+        return interPersona.loginPersona(persos.getCorreo(), persos.getContrasenia());
+    }
+    
     }
     
     
-}
+   
+    
+    
+

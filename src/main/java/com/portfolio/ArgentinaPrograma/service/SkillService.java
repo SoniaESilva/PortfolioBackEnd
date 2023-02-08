@@ -20,8 +20,8 @@ public class SkillService implements ISkillService{
     }
 
     @Override //crear o modificar skills
-    public void saveSkill(Skill ski) {
-       skillRepository.save(ski);
+    public void saveSkill(Skill skills) {
+       skillRepository.save(skills);
     }
     @Override // borrar skills
     public void deleteSkill(Integer id){
@@ -30,8 +30,8 @@ public class SkillService implements ISkillService{
 
     @Override //traer la skill
     public Skill findSkill(Integer id) {
-       Skill ski =skillRepository.findById(id).orElse(null);
-        return ski;
+       Skill skills =skillRepository.findById(id).orElse(null);
+        return skills;
     }
     
     

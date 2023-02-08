@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 
@@ -32,32 +31,17 @@ public class EducacionController {
        return interEdu.findEducacion(id);
    }
     @PostMapping("/crear")
-    public String createEdu(@RequestBody Educacion edu){
+    public void createEdu(@RequestBody Educacion edu){
         interEdu.saveEducacion(edu);
-        return "La educación fue creada correctamente";
     }
     @DeleteMapping("/borrar/{id}")
-    public String deleteEdu(@PathVariable Integer id){
+    public void deleteEdu(@PathVariable Integer id){
         interEdu.deleteEducacion(id);
-        return "La educación fue eliminada correctamente";
     }
-    @PutMapping("/editar/{id}")
-    public Educacion editEducacion(@PathVariable Integer id,
-                                       @RequestParam("establecimiento") String nuevoEstablecimiento,
-                                       @RequestParam("titulo") String nuevaTitulo,
-                                       @RequestParam("fechaInicio") String nuevaFechaInicio,
-                                       @RequestParam("fechaFin") String nuevaFechaFin,
-                                       @RequestParam("logo") String nuevoLogo,
-                                       @RequestParam("esEstudioActual") boolean nuevoEsEstudioActual){
-        Educacion edu =interEdu.findEducacion(id);
-         
-        edu.setEstablecimiento(nuevoEstablecimiento);
-        edu.setTitulo(nuevaTitulo);
-        edu.setFechaInicio(nuevaFechaInicio);
-        edu.setFechaFin(nuevaFechaFin);
-        edu.setLogo(nuevoLogo);
-        edu.setEsEstudioActual(nuevoEsEstudioActual);
+    @PutMapping("/editar")
+    public void editEdu(@RequestBody Educacion edu){
         interEdu.saveEducacion(edu);
-        return edu;
     }
-}
+    
+    }
+    

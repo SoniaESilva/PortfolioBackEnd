@@ -20,8 +20,8 @@ public class ProyectoService implements IProyectoService{
     }
 
     @Override //crear o modificar el proyecto
-    public void saveProyecto(Proyecto proyec) {
-        proyecRepository.save(proyec);
+    public void saveProyecto(Proyecto proye) {
+        proyecRepository.save(proye);
     }
 
     @Override // borrar proyecto
@@ -31,8 +31,8 @@ public class ProyectoService implements IProyectoService{
 
     @Override //traer el proyecto
     public Proyecto findProyecto(Integer id) {
-        Proyecto proyec=proyecRepository.findById(id).orElse(null);
-       return proyec;
+        Proyecto proye=proyecRepository.findById(id).orElse(null);
+       return proye;
     }
     
 }

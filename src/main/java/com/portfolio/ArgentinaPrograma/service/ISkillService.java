@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface ISkillService {
     public List<Skill>getSkill();
-    public void saveSkill(Skill ski);
+    public void saveSkill(Skill skills);
     public void deleteSkill(Integer id);
     public Skill findSkill(Integer id);
 }

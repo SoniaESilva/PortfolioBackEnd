@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface IEducacionService {
     public List<Educacion>getEducacion();
-    public void saveEducacion(Educacion edu);
+    public void saveEducacion(Educacion educ);
     public void deleteEducacion(Integer id);
     public Educacion findEducacion(Integer id);
     

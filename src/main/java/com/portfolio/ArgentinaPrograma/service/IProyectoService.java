@@ -5,7 +5,7 @@ import java.util.List;
 
 public interface IProyectoService {
     public List<Proyecto>getProyecto();
-    public void saveProyecto(Proyecto proyec);
+    public void saveProyecto(Proyecto proye);
     public void deleteProyecto(Integer id);
     public Proyecto findProyecto(Integer id);
 }

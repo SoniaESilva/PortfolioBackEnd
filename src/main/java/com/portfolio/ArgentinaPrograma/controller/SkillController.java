@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 
@@ -32,28 +31,19 @@ public class SkillController {
        return interSkill.findSkill(id);
    }
     @PostMapping("/crear")
-    public String createExp(@RequestBody Skill ski){
+    public void createExp(@RequestBody Skill ski){
         interSkill.saveSkill(ski);
-        return "El skill fue creada correctamente";
     }
     
     @DeleteMapping("/borrar/{id}")
-    public String deleteskill(@PathVariable Integer id){
+    public void deleteskill(@PathVariable Integer id){
         interSkill.deleteSkill(id);
-        return "El skill fue eliminada correctamente";
-    }
-    
-    @PutMapping("/editar/{id}")
-    public Skill editSkill(@PathVariable Integer id,
-                                       @RequestParam("nombreHabilidad") String nuevoNombreHabilidad,
-                                       @RequestParam("porcentaje") String nuevoPorcentaje){
-        Skill ski =interSkill.findSkill(id);
-         
-        ski.setNombreHabilidad(nuevoNombreHabilidad);
-        ski.setPorcentaje(nuevoPorcentaje);
-       
+     }
+     @PutMapping("/editar")
+    public void editSkill(@RequestBody Skill ski){
         interSkill.saveSkill(ski);
-        return ski;
     }
     
-}
+   }
+   
+
