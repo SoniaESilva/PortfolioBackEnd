@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("proyecto")
-@CrossOrigin(origins= "http://localhost:4200")
+@CrossOrigin(origins= "https://portfolio-frontend-sonia.web.app/index")
 public class ProyectoController {
     @Autowired
     private IProyectoService interProyec;
