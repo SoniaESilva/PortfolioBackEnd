@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("experiencia")
-@CrossOrigin(origins= "https://portfolio-frontend-sonia-b1f4a.web.app/index")
+@CrossOrigin(origins= "https://portfolio-frontend-sonia-b1f4a.web.app")
 public class ExperienciaController {
      @Autowired
     private IExperienciaService interExp;
